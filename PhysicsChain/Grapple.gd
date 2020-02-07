@@ -94,5 +94,4 @@ func state_exit() -> void:
 		anchor_stack[0].queue_free()
 		anchor_stack.remove(0)
 	host.get_node("GravityField").gravity_vec = Vector2(0, 1)
-	#print_debug("anchor_stack.size(): ", anchor_stack.size())
 	$Rope.visible = false
