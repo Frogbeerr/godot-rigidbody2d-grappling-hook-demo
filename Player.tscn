@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/Player.png" type="Texture" id=2]
+[ext_resource path="res://PhysicsChain/PhysicsChain.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PhysicsMaterial" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.961
+
+[node name="Player" type="RigidBody2D"]
+physics_material_override = SubResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.0873693, 0.0873693 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PhysicsChain" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 30.0
+margin_top = -41.0
+margin_right = 132.0
+margin_bottom = -27.0
+[connection signal="Angle" from="PhysicsChain" to="." method="_on_PhysicsChain_Angle"]

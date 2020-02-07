@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://chain/Link.gd" type="Script" id=1]
+[ext_resource path="res://chain/Anchor.tscn" type="PackedScene" id=2]
+
+[node name="Link" type="Node2D"]
+script = ExtResource( 1 )
+anchor_scene = ExtResource( 2 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 4.0
+default_color = Color( 1, 0, 0, 1 )
+texture_mode = 0
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("..")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 10, 0 )
+collision_mask = 3
